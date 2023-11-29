@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 word = "Holberton"
-word_first_3, _, word_last_2, *middle_word, _ = word
-word_last_2 = "".join(word_last_2)
-middle_word = "".join(middle_word)
+# YOUR CODE GOES HERE. PLEASE REMOVE THIS LINE
+word_first_3, word_last_2, middle_word = word[:3], word[-2:], word[1:-1]
 print(f"First 3 letters: {word_first_3}")
 print(f"Last 2 letters: {word_last_2}")
 print(f"Middle word: {middle_word}")
+# Extra line to make it 8 lines

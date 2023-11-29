@@ -8,7 +8,6 @@ number = random.randint(-10, 10)
 # Print the number
 print(number, end=" ")
 
-# Check whether the number is positive, negative, or zero and print the corresponding message
 if number > 0:
     print("is positive")
 elif number == 0:

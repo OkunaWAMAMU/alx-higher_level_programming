@@ -1,0 +1,4 @@
+Around 63 (257 small positive integers + 6 small negative integers).
+The exact number depends on the implementation-specific details of
+ NSMALLPOSINTS and NSMALLNEGINTS, which determine the range of preallocated
+ small integers that are cached and reused.

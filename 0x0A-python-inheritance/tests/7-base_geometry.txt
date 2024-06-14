@@ -29,7 +29,7 @@ class TestBaseGeometry(unittest.TestCase):
         Test integer_validator() method with valid values.
         """
         bg = BaseGeometry()
-        with patch('sys.stdout', new=StringIO()) as fake_out:
+        with patch('sys.stderr', new=StringIO()) as fake_out:
             bg.integer_validator("my_int", 12)
             bg.integer_validator("width", 89)
         self.assertEqual(fake_out.getvalue(), '')

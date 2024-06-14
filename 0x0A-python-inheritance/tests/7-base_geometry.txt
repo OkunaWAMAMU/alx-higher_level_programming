@@ -1,0 +1,56 @@
+#!/usr/bin/python3
+"""
+Tests for the BaseGeometry class.
+"""
+
+import unittest
+from io import StringIO
+from unittest.mock import patch
+
+from 7-base_geometry import BaseGeometry
+
+
+class TestBaseGeometry(unittest.TestCase):
+    """
+    Test case for the BaseGeometry class.
+    """
+
+    def test_area_not_implemented(self):
+        """
+        Test area() method raises NotImplementedError.
+        """
+        bg = BaseGeometry()
+        with self.assertRaises(Exception) as context:
+            bg.area()
+        self.assertEqual(str(context.exception), 'area() is not implemented')
+
+    def test_integer_validator_valid_values(self):
+        """
+        Test integer_validator() method with valid values.
+        """
+        bg = BaseGeometry()
+        with patch('sys.stdout', new=StringIO()) as fake_out:
+            bg.integer_validator("my_int", 12)
+            bg.integer_validator("width", 89)
+        self.assertEqual(fake_out.getvalue(), '')
+
+    def test_integer_validator_invalid_values(self):
+        """
+        Test integer_validator() method with invalid values.
+        """
+        bg = BaseGeometry()
+        with self.assertRaises(TypeError) as context:
+            bg.integer_validator("name", "John")
+        self.assertEqual(str(context.exception), 'name must be an integer')
+
+        with self.assertRaises(ValueError) as context:
+            bg.integer_validator("age", 0)
+        self.assertEqual(str(context.exception), 'age must be greater than 0')
+
+        with self.assertRaises(ValueError) as context:
+            bg.integer_validator("distance", -4)
+        self.assertEqual(str(context.exception), 'distance must be greater than 0')
+
+
+if __name__ == "__main__":
+    unittest.main()
